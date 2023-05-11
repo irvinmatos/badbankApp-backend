@@ -108,9 +108,7 @@ app.get('/account/all', function (req, res) {
     });
 });
 
-app.post("/account/login", async (req, res) => {
-    
-})
+
 
 
 
