@@ -1,10 +1,13 @@
-var express = require('express');
+import express from 'express';
 var app     = express();
-var cors    = require('cors');
-var dal     = require('./dal.js');
-const e = require('express');
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+import cors from 'cors';
+import {find, create, findOne, update, all} from './dal.js';
+//import e from 'express';
+import { sign } from "jsonwebtoken";
+//import AuthGoogle from './config/firebase-config';
+require("dotenv").config();x
+//import firebase from 'firebase/app';
+FBAuth = require('./config/firebase-config.js');
 
 
 // used to serve static files from public directory
@@ -15,7 +18,7 @@ app.use(cors());
 app.get('/account/create/:name/:email/:password', function (req, res) {
 
     // check if account exists
-    dal.find(req.params.email).
+    find(req.params.email).
         then((users) => {
 
             // if user exists, return error message
@@ -25,7 +28,7 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
             }
             else{
                 // else create user
-                dal.create(req.params.name,req.params.email,req.params.password).
+                create(req.params.name,req.params.email,req.params.password).
                     then((user) => {
                         console.log(user);
                         res.send(user);            
@@ -40,13 +43,13 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
 app.get('/account/login/:email/:password', function (req, res) {
     
 
-    dal.find(req.params.email)
+    find(req.params.email)
         .then((user) => {
 
             // if user exists, check password
             if(user.length > 0){
                 if (user[0].password === req.params.password){
-                    const token = jwt.sign({ userId: user.email }, process.env.JWT_SECRET);
+                    const token = sign({ userId: user.email }, process.env.JWT_SECRET);
                     res.json({token, user });
                     
                 }
@@ -63,12 +66,10 @@ app.get('/account/login/:email/:password', function (req, res) {
     
 });
 
-
-
 // find user account
 app.get('/account/find/:email', function (req, res) {
 
-    dal.find(req.params.email).
+    find(req.params.email).
         then((user) => {
             console.log(user);
             res.send(user);
@@ -78,7 +79,7 @@ app.get('/account/find/:email', function (req, res) {
 // find one user by email - alternative to find
 app.get('/account/findOne/:email', function (req, res) {
 
-    dal.findOne(req.params.email).
+    findOne(req.params.email).
         then((user) => {
             console.log(user);
             res.send(user);
@@ -91,7 +92,7 @@ app.get('/account/update/:email/:amount', function (req, res) {
 
     var amount = Number(req.params.amount);
 
-    dal.update(req.params.email, amount).
+    update(req.params.email, amount).
         then((response) => {
             console.log(response);
             res.send(response);
@@ -101,16 +102,12 @@ app.get('/account/update/:email/:amount', function (req, res) {
 // all accounts
 app.get('/account/all', function (req, res) {
 
-    dal.all().
+    all().
         then((docs) => {
             console.log(docs);
             res.send(docs);
     });
 });
-
-
-
-
 
 var port = 3000;
 app.listen(port);

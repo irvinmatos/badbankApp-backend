@@ -1,5 +1,4 @@
 
-
 function Spa() {
   
   return (
@@ -18,6 +17,7 @@ function Spa() {
                           {/* <Route path="/transactions/" component={Transactions} /> */}
                           <Route path="/balance/" component={Balance} />
                           <Route path="/alldata/" component={AllData} />
+                          <Route path="/newlogin/" component={AllData} />
                         </div>
                       </UserContext.Provider>
                     </div>
@@ -28,3 +28,4 @@ function Spa() {
 }
 
 ReactDOM.render(<Spa/>, document.getElementById('root'));
+

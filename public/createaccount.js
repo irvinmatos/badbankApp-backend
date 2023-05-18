@@ -1,3 +1,6 @@
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Auth } from "../config/firebase-config";
+
 function CreateAccount(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
@@ -39,6 +42,27 @@ function CreateForm(props){
     props.setShow(false);
   }    
 
+  function fbhandle() {
+    console.log(name,email,password);
+    e.preventDefault();
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth,name, email, password)
+    .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode,errorMessage);
+   
+  });
+
+  }
+
+
   return (<>
 
     Name<br/>
@@ -64,7 +88,7 @@ function CreateForm(props){
 
     <button type="submit" 
       className="btn btn-light" 
-      onClick={handle}>Create Account</button>
+      onClick={fbhandle}>Create Account</button>
 
   </>);
 }

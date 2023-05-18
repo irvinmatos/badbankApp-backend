@@ -76,4 +76,4 @@ function all() {
 }
 
 
-module.exports = { create, findOne, find, update, all };
+module.exports = {create, findOne, find, update, all};
