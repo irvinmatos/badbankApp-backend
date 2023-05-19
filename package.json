@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "lowdb sample for 1.125",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "node --experimental-modules ./index.js"
   },
@@ -22,6 +21,7 @@
     "react": "^18.2.0",
     "react-auth-kit": "^2.12.2",
     "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.1.1",
     "react-router-dom": "^6.11.2",
     "webpack": "^5.82.1"
   },

@@ -1,13 +1,9 @@
-import express from 'express';
+//import express from 'express';
+var express = require('express')
 var app     = express();
-import cors from 'cors';
-import {find, create, findOne, update, all} from './dal.js';
-//import e from 'express';
-import { sign } from "jsonwebtoken";
-//import AuthGoogle from './config/firebase-config';
-require("dotenv").config();x
-//import firebase from 'firebase/app';
-FBAuth = require('./config/firebase-config.js');
+var cors = require('cors') ;
+//import {find, create, findOne, update, all} from './dal.js';
+const {find, create, findOne, update, all } = require('./dal');
 
 
 // used to serve static files from public directory
