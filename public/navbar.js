@@ -1,7 +1,7 @@
 function NavBar(){
   return(
       <>
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-md navbar-dark ">
             <a className="navbar-brand" href="#">BadBank</a>
             <button className="navbar-toggler" type="button" data-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
