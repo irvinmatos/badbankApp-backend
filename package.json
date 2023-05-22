@@ -2,13 +2,14 @@
   "name": "littledb",
   "version": "1.0.0",
   "description": "lowdb sample for 1.125",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "start": "node --experimental-modules ./index.js"
+    "start": "node --experimental-modules ./index.mjs"
   },
   "author": "abel@mit.edu",
   "license": "MIT",
   "dependencies": {
+    "@react-firebase/database": "^0.3.11",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
